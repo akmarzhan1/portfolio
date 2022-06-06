@@ -225,7 +225,7 @@ setTimeout(function() {
             y: '+=6.28318530718',
             z: '+=0'
         }
-    )} }, 7000);
+    )} }, 6500);
 
 
 
@@ -313,8 +313,7 @@ const tick = () =>
     particles.position.z += 0.002*Math.cos(elapsedTime)
     particles.position.y += 0.0005*Math.cos(elapsedTime)
 
-    particles.material.size += 0.0001*Math.cos(elapsedTime)
-    console.log(particles.position)
+    particles.material.size += 0.00016*Math.cos(elapsedTime)
 
     const parallaxX = cursor.x * 0.5
     const parallaxY = - cursor.y * 0.5
