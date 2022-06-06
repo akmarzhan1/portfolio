@@ -1,6 +1,6 @@
 import './style.css'
 import * as THREE from 'three'
-import * as dat from 'lil-gui'
+// import * as dat from 'lil-gui'
 import gsap from 'gsap'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
@@ -9,7 +9,7 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 /**
  * Debug
  */
-const gui = new dat.GUI()
+// const gui = new dat.GUI()
 let Mesh;
 let Mesh1;
 let Mesh2;
@@ -18,13 +18,13 @@ const parameters = {
     materialColor: '#ffeded'
 }
 
-gui
-    .addColor(parameters, 'materialColor')
-    .onChange(() =>
-    {
-        material.color.set(parameters.materialColor)
-        particlesMaterial.color.set(parameters.materialColor)
-    })
+// gui
+//     .addColor(parameters, 'materialColor')
+//     .onChange(() =>
+//     {
+//         material.color.set(parameters.materialColor)
+//         particlesMaterial.color.set(parameters.materialColor)
+//     })
 
 /**
  * Base
@@ -225,7 +225,7 @@ setTimeout(function() {
             y: '+=6.28318530718',
             z: '+=0'
         }
-    )} }, 2000);
+    )} }, 7000);
 
 
 
@@ -313,7 +313,7 @@ const tick = () =>
     particles.position.z += 0.002*Math.cos(elapsedTime)
     particles.position.y += 0.0005*Math.cos(elapsedTime)
 
-    particles.material.size += 0.00035*Math.sin(elapsedTime)
+    particles.material.size += 0.0001*Math.cos(elapsedTime)
     console.log(particles.position)
 
     const parallaxX = cursor.x * 0.5
@@ -321,12 +321,12 @@ const tick = () =>
     cameraGroup.position.x += (parallaxX - cameraGroup.position.x) * 5 * deltaTime
     cameraGroup.position.y += (parallaxY - cameraGroup.position.y) * 5 * deltaTime
 
-    // Animate meshes
-    for(const mesh of sectionMeshes)
-    {
-        mesh.rotation.x += deltaTime * 0.1
-        mesh.rotation.y += deltaTime * 0.12
-    }
+    // // Animate meshes
+    // for(const mesh of sectionMeshes)
+    // {
+    //     mesh.rotation.x += deltaTime * 0.1
+    //     mesh.rotation.y += deltaTime * 0.12
+    // }
 
     if (Mesh) {    
         Mesh.position.x += 0.0035*Math.sin(elapsedTime);
