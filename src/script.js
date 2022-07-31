@@ -502,7 +502,7 @@ var modalInfo = {
     github: "#"
   },
   3: {
-    title: "Introduction to Cassandra: Tutorial Blog for Beginners",
+    title: "Introduction to Cassandra: Tutorial for Beginners",
     info: "Technologies: Cassandra / Docker. Beginner-friendly guide to implementing Cassandra (distributed database) with several clusters",
     link: "https://akmarzhan.notion.site/Cassandra-who-or-a-short-introduction-to-Apache-Cassandra-using-Docker-798d343c41c84dddbb2e52873a04e1b0",
     github: "#"
