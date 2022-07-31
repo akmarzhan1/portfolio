@@ -11,7 +11,7 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
  */
 // const gui = new dat.GUI()
 let Mesh;
-let Mesh1;
+// let Mesh1;
 let Mesh2;
 
 const parameters = {
@@ -71,13 +71,13 @@ gltfLoader.load('pose0.glb', (gltf) => {
      Mesh.position.y = - objectsDistance * 0 - 1;
  });
 
- gltfLoader.load('pose1.glb', (gltf) => {
-    Mesh1 = gltf.scene;
-    Mesh1.scale.set(1.2,1.2,1.2);
-    scene.add(Mesh1);
-    Mesh1.position.x = -1.7;
-    Mesh1.position.y = - objectsDistance * 1 - 1;
-});
+//  gltfLoader.load('pose1.glb', (gltf) => {
+//     Mesh1 = gltf.scene;
+//     Mesh1.scale.set(1.2,1.2,1.2);
+//     scene.add(Mesh1);
+//     Mesh1.position.x = -1.7;
+//     Mesh1.position.y = - objectsDistance * 1 - 1;
+// });
 
 gltfLoader.load('pose2.glb', (gltf) => {
     Mesh2 = gltf.scene;
@@ -102,11 +102,11 @@ const mesh3 = new THREE.Mesh(
 )
 
 mesh1.position.x = 2
-mesh2.position.x = - 2
+// mesh2.position.x = - 2
 mesh3.position.x = 2
 
 mesh1.position.y = - objectsDistance * 0
-mesh2.position.y = - objectsDistance * 1
+// mesh2.position.y = - objectsDistance * 1
 mesh3.position.y = - objectsDistance * 2
 
 
@@ -251,18 +251,18 @@ window.addEventListener('scroll', () =>
         )
         }
 
-        if (Mesh1){
-            gsap.to(
-                Mesh1.rotation,
-                {
-                    duration: 2,
-                    ease: 'power2.inOut',
-                    x: '+=0',
-                    y: '+=6.28318530718',
-                    z: '+=0'
-                }
-            )
-        }
+        // if (Mesh1){
+        //     gsap.to(
+        //         Mesh1.rotation,
+        //         {
+        //             duration: 2,
+        //             ease: 'power2.inOut',
+        //             x: '+=0',
+        //             y: '+=6.28318530718',
+        //             z: '+=0'
+        //         }
+        //     )
+        // }
         if (Mesh2){
             gsap.to(
                 Mesh2.rotation,
@@ -332,10 +332,10 @@ const tick = () =>
         Mesh.position.y += 0.00009*Math.sin(elapsedTime);
     }
 
-    if (Mesh1) {    
-        Mesh1.position.x += 0.0035*Math.sin(elapsedTime);
-        Mesh1.position.y += 0.00009*Math.sin(elapsedTime);
-    }
+    // if (Mesh1) {    
+    //     Mesh1.position.x += 0.0035*Math.sin(elapsedTime);
+    //     Mesh1.position.y += 0.00009*Math.sin(elapsedTime);
+    // }
 
     if (Mesh2) {    
         Mesh2.position.x += 0.0035*Math.sin(elapsedTime);
@@ -354,11 +354,14 @@ tick()
 // active navbar link
 const sections = document.querySelectorAll(".section");
 
+
 window.addEventListener("scroll", function (event) {
   sections.forEach((section) => {
     let top = window.scrollY + 250;
     let offset = section.offsetTop;
     let height = section.offsetHeight;
+
+    
     let id = section.getAttribute("id");
 
     if (top >= offset && top < offset + height) {
@@ -370,6 +373,8 @@ window.addEventListener("scroll", function (event) {
     }
   });
 });
+
+
 
 
 // ——————————————————————————————————————————————————
@@ -483,137 +488,243 @@ let putPixel = () => {
 
 setInterval(putPixel, 30);
 
-const text1_options = [
-    "Timero: Gamified Time Management Web App",
-    
-    "Face Recognition Tool for Videos of K-Pop Idols",
-    "Introduction to Cassandra: Tutorial Blog for Beginners",
-    "BERT Sentiment Analysis: Movie Reviews dataset",
-    "GAN and CNN for Style Transfer on videos and photos",
-    
-    "Responsive Three.js Portfolio (Currently Viewing)",
-    "Kanban Board: Simple Task Tracker with Authorization",
-    "MetaMask Ethereum Wallet on Rinkeby Testnet",
-    "SuggestMe: Instagram Content Recommendation"
-  ];
-  const git_text = [
-      "GitHub 🔗",
+var modalInfo = {
+  1: {
+    title: "Gamified Time Management Web App",
+    info: "Technologies: Flask / REST API / JQuery / Jinja2 / SQLAlchemy / PostgreSQL / Chart.js / Bootstrap / Tailwind / JS / HTML5 / CSS deployed on Heroku",
+    link: "https://github.com/akmarzhan1/capstone-akma",
+    github: "#"
+  },
+  2: {
+    title: "Instagram Analytics and Suggestions Tool",
+    info: "Technologies: Flask / Jinja2 / SQLAlchemy / HTML / JS / CSS / Docker / instagram-scraper deployed on Heroku and tested on TravisCI / Github Actions",
+    link: "https://github.com/akmarzhan1/content-suggestion",
+    github: "#"
+  },
+  3: {
+    title: "Introduction to Cassandra: Tutorial Blog for Beginners",
+    info: "Technologies: Cassandra / Docker. Beginner-friendly guide to implementing Cassandra (distributed database) with several clusters",
+    link: "https://akmarzhan.notion.site/Cassandra-who-or-a-short-introduction-to-Apache-Cassandra-using-Docker-798d343c41c84dddbb2e52873a04e1b0",
+    github: "#"
+  },
+  4: {
+    title: "Simple Task Tracker with Authorization",
+    info: "Technologies: Flask / HTML / CSS / Jinja2 / WTForms / Bootstrap / SQL with extensive unit testing",
+    link: "https://github.com/akmarzhan1/kanban-board",
+    github: "#"
+  },
+  5: {
+    title: "Responsive Three.js Portfolio",
+    info: "Technologies: JS / HTML / CSS / Three.js / webpack deployed on Netlify with responsive UI change feature using lil_gui",
+    link: "https://github.com/akmarzhan1/portfolio",
+    github: "#"
+  },
+  6: {
+    title: "Face Recognition Tool for Videos of K-Pop Idols",
+    info: "Technologies: cv2 / Keras / VGGFace / face_recognition. Comparison of two approaches for face recognition using feature extraction and fine-tuning",
+    link: "https://github.com/akmarzhan1/kpop-recognition-tool",
+    github: "#"
+  },
+  7: {
+    title: "MetaMask Ethereum Wallet on Rinkeby Testnet",
+    info: "Technologies: React / JS / web3 / MetaMask using smart contracts (e.g., publicly available Ethereum abis) deployed on Heroku",
+    link: "https://github.com/akmarzhan1/ethereum-wallet",
+    github: "#"
+  },
+  8: {
+    title: "BERT Sentiment Analysis: Movie Reviews dataset",
+    info: "Technologies: PyTorch / Pandas / BERT for Sequence Classification. Fine-tuning the pre-existing model on IMDb movie reviews dataset",
+    link: "https://drive.google.com/file/d/1X3jDNhsfgVxTpn7ZmOK1ifQO9Q4bScSR/view?usp=sharing",
+    github: "#"
+  },
+  9: {
+    title: "GAN and CNN for Style Transfer on media",
+    info: "Technologies: PyTorch / Pandas / VGG19. Contrasting GANs and Convolutional Neural Networks (CNN) for style transfer using VGG19 model on photos/videos",
+    link: "https://drive.google.com/file/d/1sk7uUkuHolFaWc6JiNk_HGfexIFiczBJ/view?usp=sharing",
+    github: "#"
+  }
+};
 
-      "GitHub 🔗",
-      "Blog post 🔗",
-      "Paper 🔗",
-      "Paper 🔗",
+// Get the modal
+var modal = document.getElementById('preview');
 
-      "GitHub 🔗",
-      "GitHub 🔗",
-      "GitHub 🔗",
-      "GitHub 🔗"
-  ]
-  const git_options = [
-    "https://github.com/akmarzhan1/capstone-akma",
+// button that opens the modal
+var btn = document.getElementsByClassName("button1");
 
-    "https://github.com/akmarzhan1/kpop-recognition-tool",
-    "https://akmarzhan.notion.site/Cassandra-who-or-a-short-introduction-to-Apache-Cassandra-using-Docker-798d343c41c84dddbb2e52873a04e1b0",
-    "https://drive.google.com/file/d/1X3jDNhsfgVxTpn7ZmOK1ifQO9Q4bScSR/view?usp=sharing",
-    "https://drive.google.com/file/d/1sk7uUkuHolFaWc6JiNk_HGfexIFiczBJ/view?usp=sharing",
-    
-    "https://github.com/akmarzhan1/portfolio", 
-    "https://github.com/akmarzhan1/kanban-board",
-    "https://github.com/akmarzhan1/ethereum-wallet",
-    "https://github.com/akmarzhan1/content-suggestion"
-  ];
-  const text2_options = [
-    "Technologies: Flask / REST API / JQuery / Jinja2 / SQLAlchemy / PostgreSQL / Chart.js / Bootstrap / Tailwind / JS / HTML5 / CSS deployed on Heroku",
+// <span> that closes the modal
+var span = document.getElementsByClassName("close")[0];
 
-    "Technologies: cv2 / Keras / VGGFace / face_recognition. Comparison of two approaches for face recognition using feature extraction and fine-tuning",
-    "Technologies: Cassandra / Docker. Beginner-friendly guide to implementing Cassandra (distributed database) with several clusters",
-    "Technologies: PyTorch / Pandas / BERT for Sequence Classification. Fine-tuning the pre-existing model on IMDb movie reviews dataset",
-    "Technologies: PyTorch / Pandas / VGG19. Contrasting GANs and Convolutional Neural Networks (CNN) for style transfer using VGG19 model on photos/videos.",
-    
-    "Technologies: JS / HTML / CSS / Three.js / webpack deployed on Netlify with responsive UI change feature using lil_gui",
-    "Technologies: Flask / HTML / CSS / Jinja2 / WTForms / Bootstrap / SQL with extensive unit testing ",
-    "Technologies: React / JS / web3 / MetaMask using smart contracts (e.g., publicly available Ethereum abis) deployed on Heroku",
-    "Technologies: Flask / Jinja2 / SQLAlchemy / HTML / JS / CSS / Docker / instagram-scraper deployed on Heroku and tested on TravisCI / Github Actions",
+// open modal 
+for(let i = 0; i < btn.length; i++){
+  btn[i].addEventListener("click", function() {
+    var project = btn[i].parentElement;
+    openModal(project);
+  })
+};
 
-  ];
+function openModal(project){
+  var id = project.id;
+  var img = project.getElementsByTagName("img")[0].src;
+  fillOut(id, img);
+  modal.style.display = "block";
+  document.getElementsByClassName("modal-content")[0].classList.add("scale");
+}
 
-  const color_options = ["#6bb944e3", "#a9c202e1", "#74ad57e3", "#87c924de", "#588e44e3", "#a9c202e1", "#74ad57e3", "#87c924de", "#588e44e3"];
-  const image_options = [
-    "img/timero.png",
+function fillOut(id, img){
+  document.getElementById("title").innerHTML = modalInfo[id].title;
+  document.getElementById("info").innerHTML = modalInfo[id].info;
+  document.getElementById("img").src = img;
+  document.getElementById("live").onclick = function(){
+    window.open(modalInfo[id].link,'_blank');
+  }
+  // document.getElementById("github").onclick = function(){
+  //   window.open(modalInfo[id].github,'_blank');
+  // }
+}
 
-    "img/kpop.png",
-    "img/cassandra.png",
-    "img/bert.png",
-    "img/gan.png",
+// close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
 
-    "img/portfolio.png",
-    "img/kanban.png",
-    "img/ethereum.png",
-    "img/suggestme.png"
-    ];
-  var i = 0;
-  const currentOptionText1 = document.getElementById("current-option-text1");
-  const currentOptionText2 = document.getElementById("current-option-text2");
-  const currentOptionGit = document.getElementById("current-option-git");
-  const currentOptionImage = document.getElementById("image");
-  const carousel = document.getElementById("carousel-wrapper");
-  const mainMenu = document.getElementById("menu");
-  const optionPrevious = document.getElementById("previous-option");
-  const optionNext = document.getElementById("next-option");
-  
-  currentOptionText1.innerText = text1_options[i];
-  currentOptionText2.innerText = text2_options[i];
-  currentOptionGit.href =  git_options[i];
-  currentOptionGit.innerText = git_text[i];
-  currentOptionImage.style.backgroundImage = "url(" + image_options[i] + ")";
-  mainMenu.style.background = color_options[i];
-  
-  optionNext.onclick = function () {
-    i = i + 1;
-    i = i % text1_options.length;
-    currentOptionText1.dataset.nextText = text1_options[i];
-    currentOptionText2.dataset.nextText = text2_options[i];
-    currentOptionGit.dataset.nextText = git_text[i];
-
-    mainMenu.style.background = color_options[i];
-    carousel.classList.add("anim-next");
-  
-    setTimeout(() => {
-      currentOptionImage.style.backgroundImage = "url(" + image_options[i] + ")";
-      currentOptionGit.href =  git_options[i];
-    }, 455);
-  
-    setTimeout(() => {
-      currentOptionText1.innerText = text1_options[i];
-      currentOptionText2.innerText = text2_options[i];
-      currentOptionGit.innerText = git_text[i];
-      carousel.classList.remove("anim-next");
-    }, 650);
-  };
-  
-  optionPrevious.onclick = function () {
-    if (i === 0) {
-      i = text1_options.length;
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
     }
-    i = i - 1;
-    currentOptionText1.dataset.previousText = text1_options[i];
-  
-    currentOptionText2.dataset.previousText = text2_options[i];
-    currentOptionGit.dataset.previousText = git_text[i];
+}
 
-    mainMenu.style.background = color_options[i];
-    carousel.classList.add("anim-previous");
+
+// const text1_options = [
+//     "Timero: Gamified Time Management Web App",
+    
+//     "Face Recognition Tool for Videos of K-Pop Idols",
+//     "Introduction to Cassandra: Tutorial Blog for Beginners",
+//     "BERT Sentiment Analysis: Movie Reviews dataset",
+//     "GAN and CNN for Style Transfer on videos and photos",
+    
+//     "Responsive Three.js Portfolio (Currently Viewing)",
+//     "Kanban Board: Simple Task Tracker with Authorization",
+//     "MetaMask Ethereum Wallet on Rinkeby Testnet",
+//     "SuggestMe: Instagram Content Recommendation"
+//   ];
+//   const git_text = [
+//       "GitHub 🔗",
+
+//       "GitHub 🔗",
+//       "Blog post 🔗",
+//       "Paper 🔗",
+//       "Paper 🔗",
+
+//       "GitHub 🔗",
+//       "GitHub 🔗",
+//       "GitHub 🔗",
+//       "GitHub 🔗"
+//   ]
+//   const git_options = [
+//     "https://github.com/akmarzhan1/capstone-akma",
+
+//     "https://github.com/akmarzhan1/kpop-recognition-tool",
+//     "https://akmarzhan.notion.site/Cassandra-who-or-a-short-introduction-to-Apache-Cassandra-using-Docker-798d343c41c84dddbb2e52873a04e1b0",
+//     "https://drive.google.com/file/d/1X3jDNhsfgVxTpn7ZmOK1ifQO9Q4bScSR/view?usp=sharing",
+//     "https://drive.google.com/file/d/1sk7uUkuHolFaWc6JiNk_HGfexIFiczBJ/view?usp=sharing",
+    
+//     "https://github.com/akmarzhan1/portfolio", 
+//     "https://github.com/akmarzhan1/kanban-board",
+//     "https://github.com/akmarzhan1/ethereum-wallet",
+//     "https://github.com/akmarzhan1/content-suggestion"
+//   ];
+//   const text2_options = [
+//     "Technologies: Flask / REST API / JQuery / Jinja2 / SQLAlchemy / PostgreSQL / Chart.js / Bootstrap / Tailwind / JS / HTML5 / CSS deployed on Heroku",
+
+//     "Technologies: cv2 / Keras / VGGFace / face_recognition. Comparison of two approaches for face recognition using feature extraction and fine-tuning",
+//     "Technologies: Cassandra / Docker. Beginner-friendly guide to implementing Cassandra (distributed database) with several clusters",
+//     "Technologies: PyTorch / Pandas / BERT for Sequence Classification. Fine-tuning the pre-existing model on IMDb movie reviews dataset",
+//     "Technologies: PyTorch / Pandas / VGG19. Contrasting GANs and Convolutional Neural Networks (CNN) for style transfer using VGG19 model on photos/videos.",
+    
+//     "Technologies: JS / HTML / CSS / Three.js / webpack deployed on Netlify with responsive UI change feature using lil_gui",
+//     "Technologies: Flask / HTML / CSS / Jinja2 / WTForms / Bootstrap / SQL with extensive unit testing ",
+//     "Technologies: React / JS / web3 / MetaMask using smart contracts (e.g., publicly available Ethereum abis) deployed on Heroku",
+//     "Technologies: Flask / Jinja2 / SQLAlchemy / HTML / JS / CSS / Docker / instagram-scraper deployed on Heroku and tested on TravisCI / Github Actions",
+
+//   ];
+
+//   const color_options = ["#6bb944e3", "#a9c202e1", "#74ad57e3", "#87c924de", "#588e44e3", "#a9c202e1", "#74ad57e3", "#87c924de", "#588e44e3"];
+//   const image_options = [
+//     "img/timero.png",
+
+//     "img/kpop.png",
+//     "img/cassandra.png",
+//     "img/bert.png",
+//     "img/gan.png",
+
+//     "img/portfolio.png",
+//     "img/kanban.png",
+//     "img/ethereum.png",
+//     "img/suggestme.png"
+//     ];
+//   var i = 0;
+//   const currentOptionText1 = document.getElementById("current-option-text1");
+//   const currentOptionText2 = document.getElementById("current-option-text2");
+//   const currentOptionGit = document.getElementById("current-option-git");
+//   const currentOptionImage = document.getElementById("image");
+//   const carousel = document.getElementById("carousel-wrapper");
+//   const mainMenu = document.getElementById("menu");
+//   const optionPrevious = document.getElementById("previous-option");
+//   const optionNext = document.getElementById("next-option");
   
-    setTimeout(() => {
-      currentOptionImage.style.backgroundImage = "url(" + image_options[i] + ")";
-    }, 455);
+//   currentOptionText1.innerText = text1_options[i];
+//   currentOptionText2.innerText = text2_options[i];
+//   currentOptionGit.href =  git_options[i];
+//   currentOptionGit.innerText = git_text[i];
+//   currentOptionImage.style.backgroundImage = "url(" + image_options[i] + ")";
+//   mainMenu.style.background = color_options[i];
   
-    setTimeout(() => {
-      currentOptionText1.innerText = text1_options[i];
-      currentOptionText2.innerText = text2_options[i];
-      currentOptionGit.innerText = git_text[i];
-      currentOptionGit.href = git_options[i];
-      carousel.classList.remove("anim-previous");
-    }, 650);
-  };
+//   optionNext.onclick = function () {
+//     i = i + 1;
+//     i = i % text1_options.length;
+//     currentOptionText1.dataset.nextText = text1_options[i];
+//     currentOptionText2.dataset.nextText = text2_options[i];
+//     currentOptionGit.dataset.nextText = git_text[i];
+
+//     mainMenu.style.background = color_options[i];
+//     carousel.classList.add("anim-next");
+  
+//     setTimeout(() => {
+//       currentOptionImage.style.backgroundImage = "url(" + image_options[i] + ")";
+//       currentOptionGit.href =  git_options[i];
+//     }, 455);
+  
+//     setTimeout(() => {
+//       currentOptionText1.innerText = text1_options[i];
+//       currentOptionText2.innerText = text2_options[i];
+//       currentOptionGit.innerText = git_text[i];
+//       carousel.classList.remove("anim-next");
+//     }, 650);
+//   };
+  
+//   optionPrevious.onclick = function () {
+//     if (i === 0) {
+//       i = text1_options.length;
+//     }
+//     i = i - 1;
+//     currentOptionText1.dataset.previousText = text1_options[i];
+  
+//     currentOptionText2.dataset.previousText = text2_options[i];
+//     currentOptionGit.dataset.previousText = git_text[i];
+
+//     mainMenu.style.background = color_options[i];
+//     carousel.classList.add("anim-previous");
+  
+//     setTimeout(() => {
+//       currentOptionImage.style.backgroundImage = "url(" + image_options[i] + ")";
+//     }, 455);
+  
+//     setTimeout(() => {
+//       currentOptionText1.innerText = text1_options[i];
+//       currentOptionText2.innerText = text2_options[i];
+//       currentOptionGit.innerText = git_text[i];
+//       currentOptionGit.href = git_options[i];
+//       carousel.classList.remove("anim-previous");
+//     }, 650);
+//   };
   
